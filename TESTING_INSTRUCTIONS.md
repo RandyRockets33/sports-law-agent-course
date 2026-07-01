@@ -1,54 +1,58 @@
 # Sports Agent Academy QA Instructions
 
-Use these steps after the fixed build is deployed to `https://sportsagentacademy.netlify.app`.
+Production URL: `https://sportsagentacademy.netlify.app`
+
+There is one certification program. One $497 purchase unlocks the full course: all 15 modules, all full videos, audio, quizzes, exercises, downloadable library documents, grades, account, and certificate path.
 
 ## Quick Smoke Test
 
 1. Open `https://sportsagentacademy.netlify.app/` in a private/incognito window.
 2. Confirm the top navigation shows `Sign in` and `Enroll`.
-3. Confirm the homepage preview section shows 15 playable preview clips.
-4. Play several preview clips and confirm playback sounds normal, not sped up.
-5. Click `Modules`, open Module 1, and confirm Module 1 is viewable without paying.
-6. Open Module 5 and confirm only the 10-second preview is visible before login.
-7. Click `Enroll` and confirm the pricing page loads.
-8. Click `Enroll now` on pricing and confirm Stripe checkout opens for Sports Agent Academy.
+3. Confirm the homepage says `One certification program` and does not show old agent/law-student/practitioner track choices.
+4. Confirm the homepage preview section shows 15 playable preview clips.
+5. Play several preview clips and confirm playback sounds normal.
+6. Open Module 5 and confirm only the preview is visible before login.
+7. Click `Enroll`, then `Enroll now`, and confirm Stripe checkout opens for Sports Agent Academy.
 
-## Enrolled User Test
+## Free Team Checkout Test
 
-Preferred clean test path: use the admin panel to grant a test email. Do not use a coupon that belongs to another product/site.
+Use promo code `GDTEST100` in Stripe Checkout. It is the GhostDawg team test code and should make the $497 purchase free for testers.
 
-1. Create a fresh test email address or alias.
-2. Open `/admin/` as an admin user.
-3. Use `Grant/Revoke Access` to grant `full` access to the test email.
-4. Open the public site in an incognito window.
-5. Click `Sign in`, enter the test email, then enter the emailed verification code.
-6. Open Module 5 and confirm the full lecture, audio, quiz, exercise, and materials appear.
-7. Open `Library` and confirm all Word-document download buttons are unlocked.
-8. Open `Account` and confirm the user shows as enrolled/full access.
-9. Open `Quizzes` and click quiz links for Modules 1, 8, and 15; each should land on the module without a broken anchor.
-
-## Team Link QA
-
-Assign one tester each to these paths:
-
-- Homepage: all nav items, all homepage preview clips, `Enroll`, `Preview Module 1`, `See all 15 modules`.
-- Modules: `Modules` index, Modules 1, 5, 8, 15, previous/next module links, `Open library`, `My account`, quiz links.
-- Library: all five free preview pages, back-to-library buttons, enrolled document-download buttons after full access.
-- Tracks: aspiring agents, law students, practitioners, their library links, module-start links, pricing recommendation links.
-- Account/grades: account dashboard, grades page, certificate area after enough progress.
-- Mobile: repeat homepage, module page, pricing, and admin login on a phone-width viewport.
+1. Use a fresh test email address or alias.
+2. Go to `https://sportsagentacademy.netlify.app/pricing.html`.
+3. Click `Enroll now`.
+4. Enter promo code `GDTEST100` at Stripe Checkout.
+5. Complete checkout at $0.
+6. Return to the site, click `Sign in`, and enter the same email.
+7. Enter the emailed verification code.
+8. Open Module 5 and confirm the full lecture, audio, quiz, exercise, and materials appear.
+9. Open `Library` and confirm all document download buttons are unlocked.
+10. Open `Account` and confirm the user shows `Full Access`.
 
 ## Admin Panel Test
 
-1. Confirm the admin email is included in Netlify env var `ADMIN_EMAILS`.
-2. Open `https://sportsagentacademy.netlify.app/admin/`.
-3. Click `Sign in to admin`, enter the admin email, and enter the emailed code.
-4. Confirm stats load: users, enrolled users, certificates, revenue, last-7-day stats.
-5. Grant full access to a test email.
-6. Sign in publicly with that test email and confirm the site unlocks.
-7. Revoke that test email in admin.
-8. Sign out/sign back in publicly and confirm access is removed.
+Admin URL: `https://sportsagentacademy.netlify.app/admin/`
 
-## Known Deployment Note
+1. Sign in as `randy@ghostdawgconsulting.com`.
+2. Enter the emailed verification code.
+3. Confirm stats load for users, enrolled users, certificates, revenue, and recent activity.
+4. Use `Grant/Revoke Access` to grant `full` access to a fresh test email.
+5. Sign in publicly with that test email and confirm the entire site unlocks.
+6. Revoke that test email in admin.
+7. Sign out/sign back in publicly and confirm access is removed.
 
-The local build passed static crawl and media QA. Production still requires a Netlify-authenticated deploy from this environment or another logged-in Netlify deploy path.
+## Team QA Coverage
+
+Assign one tester each to these paths:
+
+- Homepage: navigation, all preview clips, `Enroll`, `Preview Module 1`, `See all 15 modules`.
+- Modules: module index, Modules 1, 5, 8, 15, previous/next links, library links, account links, quiz links.
+- Library: preview documents before enrollment, every downloadable document after Full Access.
+- Checkout: $497 checkout, `GDTEST100` free checkout, return flow, login flow.
+- Account/grades: account dashboard, grades page, certificate progress.
+- Admin: login, stats, manual grant, manual revoke.
+- Mobile: homepage, module page, pricing, sign-in, and admin login on a phone-width viewport.
+
+## Expected Result
+
+Every successful paid purchase, `GDTEST100` checkout, or admin grant should produce the same result: `Full Access` across the entire course.

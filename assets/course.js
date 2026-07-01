@@ -45,7 +45,7 @@
     // Badges in topbar
     document.querySelectorAll('.access-badge-slot').forEach(el => {
       if (access) {
-        const labels = { full: 'Full Access', agent: 'Agent Track', lawyer: 'Lawyer Track', lawschool: 'Law School Track' };
+        const labels = { full: 'Full Access', agent: 'Full Access', lawyer: 'Full Access', lawschool: 'Full Access' };
         el.innerHTML = `<span class="access-badge">✓ ${labels[access.tier] || 'Enrolled'}</span>`;
       } else {
         el.innerHTML = '';
@@ -196,7 +196,7 @@
     const tier = params.get('tier');
     if (tier) {
       window.SLAA.grant(tier);
-      const labels = { full: 'Full Access', agent: 'Agent Track', lawyer: 'Practitioner / Lawyer Track', lawschool: 'Law School Track' };
+      const labels = { full: 'Full Access', agent: 'Full Access', lawyer: 'Full Access', lawschool: 'Full Access' };
       const lbl = labels[tier] || 'Course access';
       const valEl = document.getElementById('tier-info-value');
       if (valEl) valEl.textContent = lbl;
@@ -385,7 +385,7 @@
 
 // ----- Certificate generator -----
 window.SAA_renderCertificate = function(name, tier, dateStr, credId) {
-  const tierLabel = ({full:'Full Access',agent:'Agent Track',lawyer:'Practitioner Track',lawschool:'Law School Track'})[tier] || 'Course Completion';
+  const tierLabel = ({full:'Full Access',agent:'Full Access',lawyer:'Full Access',lawschool:'Full Access'})[tier] || 'Full Access';
   return `
 <div class="cert-preview" id="cert-svg">
   <div class="cert-seal">SPORTS<br>AGENT<br>ACADEMY</div>

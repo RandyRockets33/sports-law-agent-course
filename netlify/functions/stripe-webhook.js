@@ -50,8 +50,8 @@ exports.handler = async (event) => {
   if (evt.type === 'checkout.session.completed') {
     const session = evt.data.object;
 
-    // Reject any session that is not explicitly for Sports Agent Academy.
-    // Metadata is set on Payment Links; if a Stripe session hits this webhook for another product, ignore it.
+    // Reject any session that is not explicitly for Sports Agent Academy or using a known SAA price ID.
+    // This protects SAA from other products in the same Stripe account hitting the same webhook.
     const sessionCourse = (session.metadata && session.metadata.course) || null;
     if (sessionCourse && sessionCourse !== 'sports-agent-academy') {
       console.log('Skipping non-SAA session', session.id, 'course=', sessionCourse);
@@ -76,9 +76,11 @@ exports.handler = async (event) => {
     } catch (e) {
       console.error('listLineItems failed', e.message);
     }
-    // Metadata fallback (Payment Links set tier metadata)
-    if (!tier && session.metadata && session.metadata.tier) tier = session.metadata.tier;
-    // If we still don't have a tier AND the session is not identified as SAA, skip it entirely.
+    // Metadata fallback is allowed only when the session itself is explicitly tagged SAA.
+    if (!tier && sessionCourse === 'sports-agent-academy' && session.metadata && session.metadata.tier) {
+      tier = session.metadata.tier;
+    }
+    // If we still don't have an SAA identifier, skip it entirely.
     if (!tier) {
       if (!sawSaaPriceId && sessionCourse !== 'sports-agent-academy') {
         console.log('Skipping session with no SAA identifiers:', session.id);
