@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<base href="/sports-law-agent-course/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Account — Sports Agent Academy</title>
+<meta name="description" content="The online academy for aspiring and working sports agents. Master the legal architecture every modern agent must know.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>window.SAA_API_BASE='https://sportsagentacademy.netlify.app/api';</script>
+</head>
+<body class="">
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">SA</span>
+      <span>Sports Agent Academy</span>
+    </a>
+    <nav class="nav-links"><a href="index.html">Course</a><a href="modules/">Modules</a><a href="quizzes/">Quizzes</a><a href="library/">Library</a><a href="pricing.html">Pricing</a><a href="about.html">About</a></nav>
+    <div class="nav-right">
+      <span class="access-badge-slot"></span>
+      <span class="account-slot"><button class="btn btn-ghost" data-auth-trigger>Sign in</button></span>
+      <a class="nav-cta" href="pricing.html">Enroll</a>
+    </div>
+  </div>
+</header>
+
+
+<div class="dashboard">
+  <h1>My Account</h1>
+  <p style="color: var(--text-muted); margin: 0;">Your tier, your progress, your certificate.</p>
+
+  <div class="dashboard-grid">
+    <aside>
+      <div class="profile-card">
+        <div class="profile-avatar" id="profile-avatar">?</div>
+        <h3 class="profile-name" id="profile-name">Not signed in</h3>
+        <p class="profile-email" id="profile-email">Sign in to sync progress across devices</p>
+        <div class="profile-tier">
+          <div class="profile-tier-label">Current track</div>
+          <div class="profile-tier-value" id="profile-tier">None — enroll to unlock</div>
+        </div>
+        <button class="btn btn-secondary" id="sign-in-btn" style="width:100%;" data-auth-trigger>Sign in / Verify</button>
+        <button class="btn btn-ghost" id="sign-out-btn" style="width:100%; margin-top:0.5rem; display:none;">Sign out</button>
+        <a class="btn btn-primary" id="enroll-btn" href="pricing.html" style="width:100%; margin-top:0.6rem;">Enroll →</a>
+      </div>
+    </aside>
+
+    <div>
+      <div class="dashboard-section">
+        <h2>Course progress</h2>
+        <div class="overall-progress" style="background: rgba(212,175,55,0.05); margin-bottom: 1rem; border-radius: 8px;">
+          <div class="label-row">
+            <span class="overall-progress-label" style="color: var(--text);">0/15 modules complete</span>
+            <span style="color: var(--text-muted);" id="avg-quiz-score">Average quiz score: —</span>
+          </div>
+          <div class="overall-progress-bar"><div class="overall-progress-bar-fill"></div></div>
+        </div>
+        <div id="module-rows">
+<div class="module-progress-row">
+  <a href="modules/module_01.html">Module 01 — What Sports Law Is and How Agents Fit Into It</a>
+  <span class="status pending" data-module-status="m1">Not started</span>
+  <span class="score" data-module-score="m1">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_02.html">Module 02 — The Institutional Architecture</a>
+  <span class="status pending" data-module-status="m2">Not started</span>
+  <span class="score" data-module-score="m2">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_03.html">Module 03 — The Sources of Law That Govern the Agent's World</a>
+  <span class="status pending" data-module-status="m3">Not started</span>
+  <span class="score" data-module-score="m3">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_04.html">Module 04 — Becoming an Agent — Certification, Registration, Regulatory Floor</a>
+  <span class="status pending" data-module-status="m4">Not started</span>
+  <span class="score" data-module-score="m4">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_05.html">Module 05 — Fiduciary Duties, Conflicts, and Ethics</a>
+  <span class="status pending" data-module-status="m5">Not started</span>
+  <span class="score" data-module-score="m5">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_06.html">Module 06 — Player Contracts in the Four Major North American Leagues</a>
+  <span class="status pending" data-module-status="m6">Not started</span>
+  <span class="score" data-module-score="m6">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_07.html">Module 07 — Marketing Agreements, Endorsements, and Athlete Branding</a>
+  <span class="status pending" data-module-status="m7">Not started</span>
+  <span class="score" data-module-score="m7">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_08.html">Module 08 — Mid-Course Synthesis + Mid-Term</a>
+  <span class="status pending" data-module-status="m8">Not started</span>
+  <span class="score" data-module-score="m8">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_09.html">Module 09 — Antitrust and the Nonstatutory Labor Exemption</a>
+  <span class="status pending" data-module-status="m9">Not started</span>
+  <span class="score" data-module-score="m9">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_10.html">Module 10 — Labor Law, CBAs, Grievance Arbitration, and Discipline</a>
+  <span class="status pending" data-module-status="m10">Not started</span>
+  <span class="score" data-module-score="m10">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_11.html">Module 11 — College Sport After Alston and House</a>
+  <span class="status pending" data-module-status="m11">Not started</span>
+  <span class="score" data-module-score="m11">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_12.html">Module 12 — Agent Practice in the New College Economy</a>
+  <span class="status pending" data-module-status="m12">Not started</span>
+  <span class="score" data-module-score="m12">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_13.html">Module 13 — Crisis Representation and League Discipline</a>
+  <span class="status pending" data-module-status="m13">Not started</span>
+  <span class="score" data-module-score="m13">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_14.html">Module 14 — Sports Gambling and Integrity</a>
+  <span class="status pending" data-module-status="m14">Not started</span>
+  <span class="score" data-module-score="m14">—</span>
+</div>
+<div class="module-progress-row">
+  <a href="modules/module_15.html">Module 15 — Final Assessment + Capstone</a>
+  <span class="status pending" data-module-status="m15">Not started</span>
+  <span class="score" data-module-score="m15">—</span>
+</div></div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>Certificate of Completion</h2>
+        <p style="color: var(--text-muted); margin: 0 0 1.5rem;" id="cert-status">Complete the course (70%+ on mid-term, final, and capstone) to issue your certificate.</p>
+        <div id="cert-container"></div>
+        <div id="cert-actions" style="display:none; margin-top: 1.2rem;">
+          <button class="btn btn-primary" onclick="SAA_downloadCertificate()">Download / Print certificate →</button>
+        </div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>Quick actions</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+          <a class="btn btn-primary" href="modules/module_01.html">Continue learning →</a>
+          <a class="btn btn-secondary" href="modules/">All modules</a>
+          <a class="btn btn-secondary" href="quizzes/">Quizzes</a>
+          <a class="btn btn-secondary" href="grades.html">My grades</a>
+          <a class="btn btn-secondary" href="library/">Library</a>
+          <a class="btn btn-secondary" href="syllabus.html">Syllabus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const u = SAA.getUser();
+  const access = SAA.getTier();
+  const tierLabels = { full: 'Full Access', agent: 'Agent Track', lawyer: 'Practitioner Track', lawschool: 'Law School Track' };
+  if (u) {
+    const initials = (u.name || u.email).split(/[ @.]/).map(s => s[0]).filter(Boolean).slice(0,2).join('').toUpperCase() || 'U';
+    document.getElementById('profile-avatar').textContent = initials;
+    document.getElementById('profile-name').textContent = u.name || u.email.split('@')[0];
+    document.getElementById('profile-email').textContent = u.email;
+    document.getElementById('sign-in-btn').style.display = 'none';
+    document.getElementById('sign-out-btn').style.display = 'block';
+    document.getElementById('sign-out-btn').onclick = () => SAA.signOut();
+  }
+  if (access && access.tier) {
+    document.getElementById('profile-tier').textContent = tierLabels[access.tier] || access.tier;
+    document.getElementById('enroll-btn').style.display = 'none';
+  }
+  // Module progress
+  const p = SLAA.getProgress();
+  let scoreSum = 0; let scoreCount = 0;
+  document.querySelectorAll('[data-module-status]').forEach(el => {
+    const id = el.dataset.moduleStatus;
+    if (p.completedModules.includes(id)) { el.textContent = 'Complete'; el.classList.remove('pending'); el.classList.add('done'); }
+  });
+  document.querySelectorAll('[data-module-score]').forEach(el => {
+    const id = el.dataset.moduleScore;
+    const s = p.quizScores[id];
+    if (s !== undefined) { el.textContent = s + '%'; scoreSum += s; scoreCount++; }
+  });
+  if (scoreCount > 0) document.getElementById('avg-quiz-score').textContent = 'Average quiz score: ' + Math.round(scoreSum/scoreCount) + '%';
+
+  // Certificate eligibility (simplified: at least 12 modules complete AND average score >= 70)
+  const eligible = p.completedModules.length >= 12 && (scoreCount > 0 && scoreSum/scoreCount >= 70);
+  if (eligible && u && access && access.tier) {
+    document.getElementById('cert-status').textContent = 'Congratulations — you have earned the certificate.';
+    const credId = 'SAA-' + (u.email.replace(/[^a-z0-9]/g, '').slice(0,8) + '-' + Date.now().toString(36)).toUpperCase();
+    const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const name = (u.name && u.name !== u.email.split('@')[0]) ? u.name : prompt('Enter the full name to appear on the certificate', u.email.split('@')[0]) || u.email.split('@')[0];
+    if (u.name !== name) { u.name = name; SAA.setUser(u); }
+    document.getElementById('cert-container').innerHTML = SAA_renderCertificate(name, access.tier, dateStr, credId);
+    document.getElementById('cert-actions').style.display = '';
+  }
+})();
+</script>
+
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4>Sports Agent Academy</h4>
+      <p class="footer-tagline">The online academy for aspiring and working sports agents. Built on a four-volume practitioner treatise. Three tiers serving aspiring agents, working lawyers, and law students.</p>
+    </div>
+    <div>
+      <h4>Course</h4>
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="syllabus.html">Syllabus</a></li>
+        <li><a href="modules/">All modules</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Library</h4>
+      <ul>
+        <li><a href="library/">All resources</a></li>
+        <li><a href="library/#tier-all">Tier 1 — All</a></li>
+        <li><a href="library/#tier-lawyer">Tier 2 — Lawyer</a></li>
+        <li><a href="library/#tier-lawschool">Tier 3 — Law school</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Tracks</h4>
+      <ul>
+        <li><a href="tracks/agents.html">Aspiring agents</a></li>
+        <li><a href="tracks/law-students.html">Law students</a></li>
+        <li><a href="tracks/practitioners.html">Practitioners</a></li>
+        <li><a href="account/">My account</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Sports Agent Academy · &copy; 2026 · An online academy of Sports Marketing University
+  </div>
+</footer>
+
+<script src="assets/course.js"></script>
+</body>
+</html>

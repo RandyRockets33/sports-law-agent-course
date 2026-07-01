@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<base href="/sports-law-agent-course/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Grades — Sports Agent Academy</title>
+<meta name="description" content="The online academy for aspiring and working sports agents. Master the legal architecture every modern agent must know.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>window.SAA_API_BASE='https://sportsagentacademy.netlify.app/api';</script>
+</head>
+<body class="">
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">SA</span>
+      <span>Sports Agent Academy</span>
+    </a>
+    <nav class="nav-links"><a href="index.html">Course</a><a href="modules/">Modules</a><a href="quizzes/">Quizzes</a><a href="library/">Library</a><a href="pricing.html">Pricing</a><a href="about.html">About</a></nav>
+    <div class="nav-right">
+      <span class="access-badge-slot"></span>
+      <span class="account-slot"><button class="btn btn-ghost" data-auth-trigger>Sign in</button></span>
+      <a class="nav-cta" href="pricing.html">Enroll</a>
+    </div>
+  </div>
+</header>
+
+<div class="dashboard"><h1>My Grades</h1><p style="color: var(--text-muted); margin: 0 0 2rem;">Every quiz, every score, all in one place. Scores save automatically as you work through the course.</p><div class="dashboard-section"><h2>Summary</h2><div class="admin-grid"><div class="admin-stat"><div class="label">Modules complete</div><div class="value" id="g-complete">0/15</div></div><div class="admin-stat"><div class="label">Quizzes taken</div><div class="value" id="g-taken">0/15</div></div><div class="admin-stat"><div class="label">Average score</div><div class="value" id="g-avg">—</div></div><div class="admin-stat"><div class="label">Passing threshold</div><div class="value">70%</div></div></div></div><div class="dashboard-section"><h2>Module-by-module</h2><table class="admin-table"><thead><tr><th>Module</th><th>Title</th><th>Quiz score</th><th>Completed</th><th></th></tr></thead><tbody id="grades-rows"></tbody></table></div><div class="dashboard-section"><h2>Cumulative assessments</h2><table class="admin-table"><thead><tr><th>Assessment</th><th>Weight</th><th>Score</th></tr></thead><tbody><tr><td>Mid-term (Module 8)</td><td>15%</td><td id="midterm-score">—</td></tr><tr><td>Final (Module 15)</td><td>15%</td><td id="final-score">—</td></tr><tr><td>Capstone</td><td>10%</td><td id="capstone-score">—</td></tr><tr><td><strong>Weighted final</strong></td><td>—</td><td id="weighted-final"><strong>—</strong></td></tr></tbody></table></div><div class="dashboard-section"><h2>Certificate eligibility</h2><p id="cert-eligibility" style="color: var(--text-muted);">Complete 12+ modules with average quiz score 70%+ to be eligible for the Certificate of Completion.</p><a class="btn btn-secondary" href="account/">Go to my account dashboard →</a></div></div><script>(function(){  const p = SLAA.getProgress();  const MODS = [{"n": 1, "title": "What Sports Law Is and How Agents Fit Into It"}, {"n": 2, "title": "The Institutional Architecture"}, {"n": 3, "title": "The Sources of Law That Govern the Agent"s World"}, {"n": 4, "title": "Becoming an Agent — Certification, Registration, Regulatory Floor"}, {"n": 5, "title": "Fiduciary Duties, Conflicts, and Ethics"}, {"n": 6, "title": "Player Contracts in the Four Major North American Leagues"}, {"n": 7, "title": "Marketing Agreements, Endorsements, and Athlete Branding"}, {"n": 8, "title": "Mid-Course Synthesis + Mid-Term"}, {"n": 9, "title": "Antitrust and the Nonstatutory Labor Exemption"}, {"n": 10, "title": "Labor Law, CBAs, Grievance Arbitration, and Discipline"}, {"n": 11, "title": "College Sport After Alston and House"}, {"n": 12, "title": "Agent Practice in the New College Economy"}, {"n": 13, "title": "Crisis Representation and League Discipline"}, {"n": 14, "title": "Sports Gambling and Integrity"}, {"n": 15, "title": "Final Assessment + Capstone"}];  let scoreSum = 0; let scoreCount = 0;  let rows = "";  for (const m of MODS) {    const id = "m" + m.n;    const s = p.quizScores[id];    const done = p.completedModules.includes(id);    if (s !== undefined) { scoreSum += s; scoreCount++; }    rows += "<tr><td>" + String(m.n).padStart(2,"0") + "</td><td><a href=\"modules/module_" + String(m.n).padStart(2,"0") + ".html\" style=\"color:var(--text);text-decoration:none;\">" + m.title + "</a></td><td>" + (s !== undefined ? s + "%" : "—") + "</td><td>" + (done ? "<span class=\"admin-tier-pill\">✓</span>" : "") + "</td><td><a class=\"btn btn-ghost\" style=\"padding:0.3rem 0.8rem;font-size:0.8rem;\" href=\"modules/module_" + String(m.n).padStart(2,"0") + ".html#quiz\">Take quiz</a></td></tr>";  }  document.getElementById("grades-rows").innerHTML = rows;  document.getElementById("g-complete").textContent = p.completedModules.length + "/15";  document.getElementById("g-taken").textContent = scoreCount + "/15";  const avg = scoreCount > 0 ? Math.round(scoreSum/scoreCount) : 0;  document.getElementById("g-avg").textContent = scoreCount > 0 ? avg + "%" : "—";  const eligible = p.completedModules.length >= 12 && avg >= 70;  document.getElementById("cert-eligibility").textContent = eligible ? "✓ You are eligible. Visit your account to issue the certificate." : ("Modules complete: " + p.completedModules.length + "/12 required; avg score: " + (scoreCount ? avg : 0) + "%/70% required.");})();</script>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4>Sports Agent Academy</h4>
+      <p class="footer-tagline">The online academy for aspiring and working sports agents. Built on a four-volume practitioner treatise. Three tiers serving aspiring agents, working lawyers, and law students.</p>
+    </div>
+    <div>
+      <h4>Course</h4>
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="syllabus.html">Syllabus</a></li>
+        <li><a href="modules/">All modules</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Library</h4>
+      <ul>
+        <li><a href="library/">All resources</a></li>
+        <li><a href="library/#tier-all">Tier 1 — All</a></li>
+        <li><a href="library/#tier-lawyer">Tier 2 — Lawyer</a></li>
+        <li><a href="library/#tier-lawschool">Tier 3 — Law school</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Tracks</h4>
+      <ul>
+        <li><a href="tracks/agents.html">Aspiring agents</a></li>
+        <li><a href="tracks/law-students.html">Law students</a></li>
+        <li><a href="tracks/practitioners.html">Practitioners</a></li>
+        <li><a href="account/">My account</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Sports Agent Academy · &copy; 2026 · An online academy of Sports Marketing University
+  </div>
+</footer>
+
+<script src="assets/course.js"></script>
+</body>
+</html>

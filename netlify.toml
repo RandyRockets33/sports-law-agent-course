@@ -1,0 +1,43 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/auth/request"
+  to = "/.netlify/functions/auth-request"
+  status = 200
+[[redirects]]
+  from = "/api/auth/verify"
+  to = "/.netlify/functions/auth-verify"
+  status = 200
+[[redirects]]
+  from = "/api/access"
+  to = "/.netlify/functions/access"
+  status = 200
+[[redirects]]
+  from = "/api/stripe-webhook"
+  to = "/.netlify/functions/stripe-webhook"
+  status = 200
+[[redirects]]
+  from = "/api/verify/*"
+  to = "/.netlify/functions/cert-verify?id=:splat"
+  status = 200
+[[redirects]]
+  from = "/api/cert/issue"
+  to = "/.netlify/functions/cert-issue"
+  status = 200
+[[redirects]]
+  from = "/api/admin"
+  to = "/.netlify/functions/admin"
+  status = 200
+[[redirects]]
+  from = "/api/admin/grant"
+  to = "/.netlify/functions/admin-grant"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
