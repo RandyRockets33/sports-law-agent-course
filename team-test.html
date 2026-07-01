@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<base href="/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team Test Access — Sports Agent Academy</title>
+<meta name="description" content="The online academy for aspiring and working sports agents. Master the legal architecture every modern agent must know.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>window.SAA_API_BASE='https://sportsagentacademy.netlify.app/api';</script>
+</head>
+<body class="">
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">SA</span>
+      <span>Sports Agent Academy</span>
+    </a>
+    <nav class="nav-links"><a href="index.html">Course</a><a href="modules/">Modules</a><a href="quizzes/">Quizzes</a><a href="library/">Library</a><a href="pricing.html">Pricing</a><a href="about.html">About</a></nav>
+    <div class="nav-right">
+      <span class="access-badge-slot"></span>
+      <span class="account-slot"><button class="btn btn-ghost" data-auth-trigger>Sign in</button></span>
+      <a class="nav-cta" href="pricing.html">Enroll</a>
+    </div>
+  </div>
+</header>
+
+
+<section style="padding-top: 6rem;">
+  <div class="section-inner" style="max-width: 720px;">
+    <div class="section-header">
+      <div class="section-eyebrow">Team testing</div>
+      <h2>Activate Full Access for QA.</h2>
+      <p>Use the private GhostDawg team code to grant full course access to your test email, then sign in with the verification code sent to that address.</p>
+    </div>
+    <div class="dashboard-section">
+      <label class="auth-help" for="team-email" style="display:block;margin-bottom:0.4rem;">Test email</label>
+      <input class="auth-input" type="email" id="team-email" placeholder="tester@example.com" autocomplete="email">
+      <label class="auth-help" for="team-code" style="display:block;margin:1rem 0 0.4rem;">Team code</label>
+      <input class="auth-input" type="text" id="team-code" placeholder="GDTEST100" autocomplete="off">
+      <div style="display:flex; gap:0.8rem; flex-wrap:wrap; align-items:center; margin-top:1.2rem;">
+        <button class="btn btn-primary" id="team-code-submit">Grant Full Access</button>
+        <button class="btn btn-secondary" data-auth-trigger>Sign in</button>
+      </div>
+      <p id="team-code-status" style="color: var(--text-muted); margin-top: 1rem;"></p>
+    </div>
+  </div>
+</section>
+<script>
+document.getElementById('team-code-submit').addEventListener('click', async () => {
+  const email = document.getElementById('team-email').value.trim().toLowerCase();
+  const code = document.getElementById('team-code').value.trim();
+  const out = document.getElementById('team-code-status');
+  if (!email || !email.includes('@') || !code) {
+    out.style.color = 'var(--accent)';
+    out.textContent = 'Enter a valid email and team code.';
+    return;
+  }
+  out.style.color = 'var(--text-muted)';
+  out.textContent = 'Granting access...';
+  try {
+    const r = await fetch(window.SAA_API_BASE + '/team-code', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email, code})
+    });
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok) {
+      out.style.color = 'var(--accent)';
+      out.textContent = data.error || 'Code failed.';
+      return;
+    }
+    out.style.color = 'var(--success)';
+    out.textContent = 'Full Access granted. Check that email for the 6-digit sign-in code, then click Sign in.';
+  } catch (e) {
+    out.style.color = 'var(--accent)';
+    out.textContent = 'Team-code service unavailable. Use the admin manual grant as fallback.';
+  }
+});
+</script>
+
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4>Sports Agent Academy</h4>
+      <p class="footer-tagline">The online academy for aspiring and working sports agents. One certification program. One enrollment. Full access to every module, video, quiz, exercise, and library document.</p>
+    </div>
+    <div>
+      <h4>Course</h4>
+      <ul>
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="syllabus.html">Syllabus</a></li>
+        <li><a href="modules/">All modules</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Library</h4>
+      <ul>
+        <li><a href="library/">All resources</a></li>
+        <li><a href="library/#free-previews">Free previews</a></li>
+        <li><a href="library/#full-library">Full library</a></li>
+        <li><a href="account/">My account</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Access</h4>
+      <ul>
+        <li><a href="pricing.html">Enroll once</a></li>
+        <li><a href="quizzes/">Quizzes</a></li>
+        <li><a href="grades.html">Grades</a></li>
+        <li><a href="account/">My account</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Sports Agent Academy · &copy; 2026 · An online academy of Sports Marketing University
+  </div>
+</footer>
+
+<script src="assets/course.js"></script>
+</body>
+</html>

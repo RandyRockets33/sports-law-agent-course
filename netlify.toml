@@ -34,6 +34,10 @@
   from = "/api/admin/grant"
   to = "/.netlify/functions/admin-grant"
   status = 200
+[[redirects]]
+  from = "/api/team-code"
+  to = "/.netlify/functions/team-code"
+  status = 200
 
 [[headers]]
   for = "/*"

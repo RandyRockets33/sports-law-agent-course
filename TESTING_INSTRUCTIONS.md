@@ -14,20 +14,19 @@ There is one certification program. One $497 purchase unlocks the full course: a
 6. Open Module 5 and confirm only the preview is visible before login.
 7. Click `Enroll`, then `Enroll now`, and confirm Stripe checkout opens for Sports Agent Academy.
 
-## Free Team Checkout Test
+## Free Team Access Test
 
-Use promo code `GDTEST100` in Stripe Checkout. It is the GhostDawg team test code and should make the $497 purchase free for testers.
+Use team code `GDTEST100` on the private team test page. It grants Full Access to the tester email and sends the normal sign-in verification code.
 
 1. Use a fresh test email address or alias.
-2. Go to `https://sportsagentacademy.netlify.app/pricing.html`.
-3. Click `Enroll now`.
-4. Enter promo code `GDTEST100` at Stripe Checkout.
-5. Complete checkout at $0.
-6. Return to the site, click `Sign in`, and enter the same email.
-7. Enter the emailed verification code.
-8. Open Module 5 and confirm the full lecture, audio, quiz, exercise, and materials appear.
-9. Open `Library` and confirm all document download buttons are unlocked.
-10. Open `Account` and confirm the user shows `Full Access`.
+2. Go to `https://sportsagentacademy.netlify.app/team-test.html`.
+3. Enter the test email and team code `GDTEST100`.
+4. Click `Grant Full Access`.
+5. Check the test inbox for the 6-digit verification code.
+6. Click `Sign in`, enter the same email, and enter the verification code.
+7. Open Module 5 and confirm the full lecture, audio, quiz, exercise, and materials appear.
+8. Open `Library` and confirm all document download buttons are unlocked.
+9. Open `Account` and confirm the user shows `Full Access`.
 
 ## Admin Panel Test
 
@@ -48,11 +47,11 @@ Assign one tester each to these paths:
 - Homepage: navigation, all preview clips, `Enroll`, `Preview Module 1`, `See all 15 modules`.
 - Modules: module index, Modules 1, 5, 8, 15, previous/next links, library links, account links, quiz links.
 - Library: preview documents before enrollment, every downloadable document after Full Access.
-- Checkout: $497 checkout, `GDTEST100` free checkout, return flow, login flow.
+- Checkout/access: $497 checkout, `GDTEST100` team-code grant, return flow, login flow.
 - Account/grades: account dashboard, grades page, certificate progress.
 - Admin: login, stats, manual grant, manual revoke.
 - Mobile: homepage, module page, pricing, sign-in, and admin login on a phone-width viewport.
 
 ## Expected Result
 
-Every successful paid purchase, `GDTEST100` checkout, or admin grant should produce the same result: `Full Access` across the entire course.
+Every successful paid purchase, `GDTEST100` team-code grant, or admin grant should produce the same result: `Full Access` across the entire course.
