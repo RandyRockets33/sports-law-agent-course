@@ -16,8 +16,9 @@
   }
   function saveProgress(p) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); } catch(e){} }
   function getAccess() {
-    try { return JSON.parse(localStorage.getItem(ACCESS_KEY)) || null; }
-    catch(e) { return null; }
+    // TEMPORARY FREE-QA MODE: unlock the full academy for every visitor.
+    // Restore the localStorage lookup when the paywall is re-enabled.
+    return { tier: 'full', grantedAt: Date.now(), freeQaMode: true };
   }
   function saveAccess(a) { try { localStorage.setItem(ACCESS_KEY, JSON.stringify(a)); } catch(e){} }
 
@@ -327,14 +328,12 @@
     getUser, setUser, clearUser, openAuth,
     signOut: () => { clearUser(); location.reload(); },
     hasTier: function(tier) {
-      try {
-        const a = JSON.parse(localStorage.getItem(ACCESS_KEY) || 'null');
-        if (!a || !a.tier) return false;
-        return (TIER_INCLUDES[a.tier] || []).includes(tier);
-      } catch(e) { return false; }
+      // TEMPORARY FREE-QA MODE: all resource tiers are available while the team tests.
+      return true;
     },
     getTier: function() {
-      try { return JSON.parse(localStorage.getItem(ACCESS_KEY) || 'null'); } catch(e) { return null; }
+      // TEMPORARY FREE-QA MODE: account pages should also show Full Access.
+      return { tier: 'full', grantedAt: Date.now(), freeQaMode: true };
     }
   };
 
